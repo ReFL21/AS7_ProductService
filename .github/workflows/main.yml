@@ -37,10 +37,10 @@ jobs:
 
 
     - name: Build with list file structure
-      run: cd E-Commerce_Application
+      run: ls
 
     - name: Build with Gradle 8.5
-      run: gradle build
+      run: gradle -p E-Commerce_Application build
 
 #    - name: Grant execute permission
 #      run: chmod +x ./E-Commerce_Application/gradlew
