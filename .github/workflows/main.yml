@@ -34,7 +34,11 @@ jobs:
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
     - name: Build with list file structure
       run: ls
-    
+
+    - name: Grant execute permission
+      run: chmod +x ./E-Commerce_Application/gradlew
+
+
     - name: Build with Gradle Wrapper
       run: ./E-Commerce_Application/gradlew build
 
