@@ -10,9 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Products {
+public class Product {
 private long id;
 private String name;
 private long price;
+private String description;
+private long quantity;
 
 }
