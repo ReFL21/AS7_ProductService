@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = {"http://localhost:8080"})
 @RequestMapping("/products")
 public class ProductController {
 

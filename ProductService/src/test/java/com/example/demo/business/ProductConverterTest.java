@@ -10,7 +10,7 @@ public class ProductConverterTest {
     @Test
     void shoudlConvertProductEntityToProduct(){
         ProductEntity productEntity = ProductEntity.builder()
-                .id(15L)
+                .id("123asd")
                 .name("NvidiaRTX3070ti")
                 .price(1200)
                 .description("Very solid product for it's price.")
@@ -20,7 +20,7 @@ public class ProductConverterTest {
         Product actualProduct = ProductConverter.convert(productEntity);
 
         Product expectedProduct = Product.builder()
-                .id(15L)
+                .id("123asd")
                 .name("NvidiaRTX3070ti")
                 .price(1200)
                 .description("Very solid product for it's price.")

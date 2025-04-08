@@ -5,7 +5,7 @@ import com.example.demo.domain.CreateProductsRequest;
 import com.example.demo.domain.CreateProductsResponse;
 import com.example.demo.repository.ProductEntity;
 import com.example.demo.repository.ProductRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateProductImpl implements ICreateProduct {
     private final ProductRepository productRepository;
+
     @Override
     @Transactional
     public CreateProductsResponse createProduct(CreateProductsRequest productsRequest) {
@@ -20,8 +21,7 @@ public class CreateProductImpl implements ICreateProduct {
         return CreateProductsResponse.builder().id(entity.getId()).build();
     }
 
-
-    private ProductEntity saveProduct(CreateProductsRequest productsRequest){
+    private ProductEntity saveProduct(CreateProductsRequest productsRequest) {
         ProductEntity productEntity = ProductEntity.builder()
                 .name(productsRequest.getName())
                 .price(productsRequest.getPrice())

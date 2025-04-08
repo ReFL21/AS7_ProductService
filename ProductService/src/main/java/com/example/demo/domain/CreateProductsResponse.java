@@ -6,5 +6,5 @@ import lombok.Data;
 @Builder
 @Data
 public class CreateProductsResponse {
-    private long id;
+    private String id;
 }

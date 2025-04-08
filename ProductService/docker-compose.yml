@@ -1,0 +1,16 @@
+# docker-compose.yml
+services:
+  productservice:
+    image: product-service:0.0.1
+    container_name: product-service_app
+    ports:
+      - "8084:8080"
+    environment:
+      # Make sure this hostname matches the existing MongoDB container's name
+      SPRING_DATA_MONGODB_URI: mongodb://MongoDB:27017/product-database
+    networks:
+      - products_net
+
+networks:
+  products_net:
+    external: true

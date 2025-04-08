@@ -1,28 +1,25 @@
 package com.example.demo.repository;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
-@Entity
-@Table()
 @NoArgsConstructor
+@Document(collection = "products")
 public class ProductEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @Column(name = "price")
     private long price;
-
-    @Column(name = "quantity")
     private long quantity;
+
     @NotNull
     private String name;
+
     @NotNull
     private String description;
 }

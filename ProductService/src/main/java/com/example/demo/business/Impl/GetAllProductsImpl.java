@@ -5,7 +5,7 @@ import com.example.demo.business.ProductConverter;
 import com.example.demo.domain.GetAllProductsResponse;
 import com.example.demo.domain.Product;
 import com.example.demo.repository.ProductRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
