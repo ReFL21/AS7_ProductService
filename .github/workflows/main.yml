@@ -63,7 +63,7 @@ jobs:
     - name: Build with Gradle 8.5
       run: gradle -p ProductService build
     - name: Tests Gradle 8.5
-      run: gradle test
+      run: gradle -p ProductService test
 
 #    - name: Grant execute permission
 #      run: chmod +x ./E-Commerce_Application/gradlew
