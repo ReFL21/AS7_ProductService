@@ -3,9 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.business.ICreateProduct;
 import com.example.demo.business.IDeleteProduct;
 import com.example.demo.business.IGetAllProducts;
-import com.example.demo.domain.CreateProductsRequest;
-import com.example.demo.domain.CreateProductsResponse;
-import com.example.demo.domain.GetAllProductsResponse;
+import com.example.demo.business.IUpdateProduct;
+import com.example.demo.domain.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,8 @@ public class ProductController {
 
     @Autowired
     private final IDeleteProduct deleteProduct;
+    @Autowired
+    private final IUpdateProduct updateProduct;
 
     @GetMapping
     public ResponseEntity<GetAllProductsResponse>getAllProducts(){
@@ -40,11 +41,17 @@ public class ProductController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void>deleteProduct(@PathVariable Long id){
+    public ResponseEntity<Void>deleteProduct(@PathVariable String id){
        deleteProduct.deleteProduct(id);
 
         return ResponseEntity.noContent().build();
     }
 
-
+    @PutMapping("/update")
+    public ResponseEntity<UpdateProductsResponse> updateProduct(
+            @Valid @RequestBody UpdateProductsRequest request
+    ) {
+        UpdateProductsResponse resp = updateProduct.updateProduct(request);
+        return ResponseEntity.ok(resp);
+    }
 }

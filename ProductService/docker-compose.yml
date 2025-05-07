@@ -1,16 +1,25 @@
-# docker-compose.yml
 services:
   productservice:
-    image: product-service:0.0.1
+    image: product-service:0.0.2
     container_name: product-service_app
     ports:
-      - "8084:8080"
+      - "8084:8081"
     environment:
-      # Make sure this hostname matches the existing MongoDB container's name
+      # MongoDB
       SPRING_DATA_MONGODB_URI: mongodb://MongoDB:27017/product-database
+
+      # RabbitMQ (point at your existing rabbitmq container)
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+
     networks:
       - products_net
+      - broker-net    # <-- attach to the RabbitMQ network too
 
 networks:
   products_net:
-    external: true
+    external: true   # your existing Mongo network
+  broker-net:
+    external: true   # your existing RabbitMQ network

@@ -13,5 +13,5 @@ public class DeleteProductImpl implements IDeleteProduct {
     private final ProductRepository repository;
     @Override
     @Transactional
-    public void deleteProduct(Long id){this.repository.deleteById(id);}
+    public void deleteProduct(String id){this.repository.deleteById(id);}
 }
