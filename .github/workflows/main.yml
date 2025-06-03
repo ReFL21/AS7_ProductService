@@ -34,8 +34,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle
 
-      - name: Build ProductService (no tests)
-        run: gradle -p ProductService build
+      - name: Build ProductService (skip tests)
+        run: gradle -p ProductService build -x test
 
       - name: Upload JAR Artifact for Docker
         uses: actions/upload-artifact@v4
@@ -105,7 +105,7 @@ jobs:
           path: ProductService/build/reports/tests/test
 
   dockerhub-push:
-    needs: build  # Only depends on build, not on test
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
